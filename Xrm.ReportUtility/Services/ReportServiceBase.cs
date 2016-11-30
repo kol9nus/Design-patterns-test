@@ -9,7 +9,7 @@ namespace Xrm.ReportUtility.Services
     public abstract class ReportServiceBase : IReportService
     {
         private readonly string[] _args;
-
+        
         protected ReportServiceBase(string[] args)
         {
             _args = args;
@@ -17,6 +17,12 @@ namespace Xrm.ReportUtility.Services
 
         public Report CreateReport()
         {
+            /*
+             * Тут вот у нас стратегия. Хорошее решение, т.к. есть "шаблон" создания
+             * репорта, где одна из функций (GetDataRows) зависит от конкретного
+             * типа файла, но участие в построение играет одно и то же.
+             */
+
             var config = ParseConfig();
             var dataTransformer = DataTransformerCreator.CreateTransformer(config);
 

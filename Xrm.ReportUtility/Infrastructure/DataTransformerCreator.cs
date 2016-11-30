@@ -9,7 +9,16 @@ namespace Xrm.ReportUtility.Infrastructure
         public static IDataTransformer CreateTransformer(ReportConfig config)
         {
             IDataTransformer service = new DataTransformer(config);
-
+            /*
+             * Тут использованы декораторы (Decorator), а точнее создаются тут.
+             * Идея хорошая, т.к. объекту динамически
+             * добавляются новые обязанности. Конкретно тут применяется т.к. происходит модификация
+             * аргументов (отчёта) в зависимости от заданных параметров (config).
+             * 
+             * Кроме того сам процесс создания похож на... фабричный метод? Вроде как он.
+             * Плюсы использования в том, что параметры создания задаются с помощью config.
+             * Также сам процесс создания отделён от класса и задаётся "динамически".
+             */
             if (config.WithData)
             {
                 service = new WithDataReportTransformer(service);

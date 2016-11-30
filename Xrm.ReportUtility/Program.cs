@@ -25,7 +25,10 @@ namespace Xrm.ReportUtility
         private static IReportService GetReportService(string[] args)
         {
             var filename = args[0];
-
+            /*
+             * Добавление новых расширений не должно вызвать затруднений. Обойдётся двумя новыми
+             * классами и парой строчек тут.
+             */
             if (filename.EndsWith(".txt"))
             {
                 return new TxtReportService(args);

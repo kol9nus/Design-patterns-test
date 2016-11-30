@@ -8,6 +8,11 @@ namespace Xrm.ReportUtility.Infrastructure.Transformers
     {
         private readonly ReportConfig _config;
 
+        /*
+         * Адаптер (Object Adapter). Расширяем функционал какого то не известного мне класса
+         * ReportConfig, добавляя метод TransformData. ITarget = IDataTransformer
+         */
+
         public DataTransformer(ReportConfig config)
         {
             _config = config;    
